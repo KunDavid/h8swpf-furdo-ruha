@@ -1,0 +1,35 @@
+.div-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.main_component {
+    height: 100vh;
+    background: linear-gradient(120deg, #c18aff 60%, #9365c8 60%);
+}
+
+form div {
+    padding: 6px 6px 6px 6px;
+}
+
+form {
+    display: inline-grid;
+    width: 60%;
+    align-self: center;
+}
+
+.subForm {
+    width: 100%;
+    display: inline-grid;
+}
+
+.buttons {
+    padding: 5px;
+}
+
+button {
+    width: 100px;
+}

@@ -1,0 +1,107 @@
+
+<div class="div-card" *ngIf="imageInput">
+    <mat-card class="colors" fxLayout="row" fxLayoutAlign="left" fxLayoutGap="18px">
+        <span fxFlex="1 1 40%">
+            <mat-card-header>
+                <mat-card-title>{{imageInput.name}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <img class="shopImage" [src]="loadedImage"/>
+                <div class="break"></div>
+                <div>{{imageInput.name}}</div>
+            </mat-card-content>
+        </span>
+        <span fxFlex="1 1 40%">
+            <mat-card-actions>
+                <form [formGroup]="itemsForm" (ngSubmit)="addToCart()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label for="clothe">Válassz egy terméket! </mat-label>
+                            <mat-select formControlName="clothe">
+                                <mat-option value="Fürdőnadrág">Fürdőnadrág</mat-option>
+                                <mat-option value="Melltartó">Melltartó</mat-option>
+                                <mat-option value="Egyrészes fürdőruha">Egyrészes fürdőruha</mat-option>
+                                <mat-option value="Bugyi">Bugyi</mat-option>
+                                <mat-option value="Úszósapka">Úszósapka</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="break"></div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label for="size">Milyen méretben szeretnéd? </mat-label>
+                            <mat-select formControlName="size">
+                                <mat-option value="S">S</mat-option>
+                                <mat-option value="M">M</mat-option>
+                                <mat-option value="L">L</mat-option>
+                                <mat-option value="XL">XL</mat-option>
+                                <mat-option value="XXL">XXL</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="break"></div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label for="color">Melyik szín passzol hozzád? </mat-label>
+                            <mat-select formControlName="color">
+                                <mat-option value="Fekete">Fekete</mat-option>
+                                <mat-option value="Fehér">Fehér</mat-option>
+                                <mat-option value="Piros">Piros</mat-option>
+                                <mat-option value="Zöld">Zöld</mat-option>
+                                <mat-option value="Kék">Kék</mat-option>
+                                <mat-option value="Lila">Lila</mat-option>
+                                <mat-option value="Sárga">Sárga</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="break"></div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label for="comment">Írd le az egyéb vágyaidat!  </mat-label>
+                            <textarea matInput type="text" formControlName="comment"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="break"></div>
+                    <div>
+                        <mat-label class="white" for="size">Tetszik ez a ruha? </mat-label>
+                        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+                            <mat-button-toggle value="igen">Igen</mat-button-toggle>
+                            <mat-button-toggle value="nem">Nem</mat-button-toggle>
+                            <mat-button-toggle value="semleges">Semleges</mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <div class="break"></div>
+                    <div>
+                        <button mat-raised-button class="upper" color="primary" type="submit">Kosárba</button>
+                    </div>
+                </form>
+            </mat-card-actions>
+        </span>
+    
+    </mat-card>
+
+    <div class="break"></div>
+
+    <div class="center" *ngIf="carteds.length">
+        <h2>Eddig rendelt ruhák</h2>
+        <table mat-table>
+            <tr [ngStyle]="{'background-color': 'lightblue'}">
+                <th>Termék</th>
+                <th>Méret</th>
+                <th>Szín</th>
+                <th>Megjegyzés</th>
+                <th>Rendelés ideje</th>
+            </tr>
+            <tr *ngFor="let carted of carteds; let i = index;" [ngClass]="i % 2 === 0 ? 'brown' : 'light-brown'">
+                <td>{{carted.clothe}}</td>
+                <td [ngStyle]="{'background':'linear-gradient(120deg, #8c3d3d 20%, #793333 50%)','color':'white', 'font-weight':'bold'}">{{carted.size}}</td>
+                <td>{{carted.color}}</td>
+                <td>{{carted.comment}}</td>
+                <td>{{carted.date | customDate}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="break"></div>
+
+    
+</div>

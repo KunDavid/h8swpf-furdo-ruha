@@ -1,0 +1,15 @@
+<app-list [shopObjectInput]="shopObject" (imageObjectEmitter)="loadImage($event)"></app-list>
+<app-viewer [imageInput]="chosenImage"></app-viewer>
+
+
+<!-- <div>
+    <select (change)="reload()"[(ngModel)]="chosenImage">
+        <option *ngFor="let obj of shopObject" [ngValue]="obj">{{obj.id}}</option>
+    </select>
+
+    <div class="container" *ngIf="chosenImage">
+        <img class="shopImage" [src]="'assets/' + chosenImage.id + '.jpg'"/>
+        <div class="break"></div>
+        <div>{{chosenImage.name}}</div>
+    </div>
+</div> -->

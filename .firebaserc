@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "furdoruha-webshop": {
+      "hosting": {
+        "h8swpf-furdo-ruha": [
+          "furdoruha-webshop"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "furdoruha-webshop"
+  }
+}
