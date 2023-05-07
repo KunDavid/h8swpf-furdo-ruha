@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TestLoadingService } from '../../shared/services/test-loading.service';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
+import { FirebaseError } from '@angular/fire/app';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +34,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       }).catch(error => {
         console.log("Üres, vagy rosszul kitöltött mező!");
         this.loading = false;
+        let errorCode = (error as FirebaseError).code;
+        if(errorCode === 'auth/invalid-email') {
+          console.log("****HELYTELEN VAGY ÜRES EMAIL MEZŐ****");
+        }
+        if(errorCode === 'auth/missing-password') {
+          console.log("****NEM ADTÁL MEG JELSZÓT****");
+        }
         return null;
       });
   }
